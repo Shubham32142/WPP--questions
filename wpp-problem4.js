@@ -1,3 +1,5 @@
+//Write a JavaScript program to calculate the days left before Christmas.
+
 function daysTillChristmas() {
     const date = new Date();
     const christmasDate = new Date(date.getFullYear(), 11, 25);

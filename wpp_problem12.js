@@ -3,3 +3,5 @@ function reverseString(stri) {
     return stri.split('').reverse().join('');
 }
 console.log(reverseString("shiv"));
+
+

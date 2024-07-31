@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropdown {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 90vh;
+
+        }
+
+        .chooseBtn {
+            border-radius: 10px 10px 0px 0px;
+            width: 200px;
+            height: 30px;
+            background-color: purple;
+            cursor: pointer;
+
+        }
+
+        #country {
+            display: none;
+            list-style: none;
+            background-color: rgb(204, 20, 204);
+            width: 200px;
+            border-radius: 0px 0px 10px 0px;
+            padding: 0;
+            margin: 0;
+        }
+
+        #dropdown-menu {
+            cursor: pointer;
+            border-bottom: 1px solid white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dropdown">
+        <button class="chooseBtn">Select country</button>
+        <ul id="country">
+            <li id="dropdown-menu">India</li>
+            <li id="dropdown-menu">USA</li>
+            <li id="dropdown-menu">Australia</li>
+            <li id="dropdown-menu">Brazil</li>
+            <li id="dropdown-menu">Italy</li>
+        </ul>
+    </div>
+    <script src="wpp_problem22.js"></script>
+</body>
+
+</html>

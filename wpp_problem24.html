@@ -1,0 +1,82 @@
+<!-- Write a JavaScript program to implement drag-and-drop functionality to allow users to reorder items in a list -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        #drag {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dragList {
+            background-color: aqua;
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: move;
+        }
+    </Style>
+</head>
+
+<body>
+    <ul id="drag">
+        <li class="dragList" draggable="true">Hindi</li>
+        <li class="dragList" draggable="true">English</li>
+        <li class="dragList" draggable="true">Math</li>
+        <li class="dragList" draggable="true">Science</li>
+        <li class="dragList" draggable="true">Social Science</li>
+    </ul>
+
+
+    <script>
+        let drag = document.getElementById("drag");
+        let draggedItem = null;
+        drag.addEventListener("dragstart", function (event) {
+            draggedItem = event.target;
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/html', draggedItem.innerHTML);
+            event.target.style.opacity = '0.5';
+        });
+
+        drag.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "move";
+            const target = event.target;
+            if (target !== draggedItem && target.classList.contains('dragList')) {
+                const boundingRect = target.getBoundingClientRect();
+                const offset = boundingRect.y + (boundingRect.height / 2);
+                if (event.clientY - offset > 0) {
+                    target.style.borderBottom = "solid 2px #000"
+                    target.style.borderTop = "";
+
+                } else {
+                    target.style.borderTop = 'solid 2px #000';
+                    target.style.borderBottom = "";
+                }
+            }
+        })
+
+        drag.addEventListener("drop", function (event) {
+            event.preventDefault();
+            const targetItem = event.target;
+            if (targetItem !== draggedItem && targetItem.classList.contains('dragList')) {
+                if (event.clientY > targetItem.getBoundingClientRect().top + (targetItem.offsetHeight / 2)) {
+                    targetItem.parentNode.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    targetItem.parentNode.insertBefore(draggedItem, targetItem);
+                }
+            }
+            targetItem.style.borderTop = '';
+            targetItem.style.borderBottom = '';
+            draggedItem.style.opacity = '';
+            draggedItem = null;
+
+        })
+    </script>
+</body>
+
+</html>

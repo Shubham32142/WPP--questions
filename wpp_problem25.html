@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">Click me!</button>
+    <p class="hide">I think the button is misclicked!</p>
+    <script>
+        const myBtn = document.querySelector('.btn');
+        const toggleHide = document.querySelector('.hide')
+        function handleDoubleClick() {
+            toggleHide.classList.toggle('hide');
+            myBtn.removeEventListener('dblclick', handleDoubleClick);
+        }
+        myBtn.addEventListener('dblclick', handleDoubleClick);
+
+    </script>
+</body>
+
+</html>
